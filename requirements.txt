@@ -1,0 +1,11 @@
+# Tested versions. start.bat installs these into the .deps folder (nothing is installed system-wide).
+aiohttp==3.14.5
+pycaw==20260927
+comtypes==1.5.0
+psutil==7.2.2
+screen-brightness-control==0.27.2
+qrcode==8.2
+winrt-runtime==4.2.0
+winrt-Windows.Media.Control==4!10.0.28000.2957
+winrt-Windows.Foundation==4!10.0.28000.2957
+winrt-Windows.Storage.Streams==4!10.0.28000.2957

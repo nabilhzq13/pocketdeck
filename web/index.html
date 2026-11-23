@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="PocketDeck">
+<meta name="theme-color" content="#1c1f26">
+<title>PocketDeck</title>
+<link rel="apple-touch-icon" href="/app-icon-180.png">
+<link rel="icon" href="/app-icon-180.png">
+<link rel="manifest" href="/static/manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="chassis">
+  <header class="top">
+    <div class="status" id="conn"><span class="led" aria-hidden="true"></span><span id="host">Connecting</span></div>
+    <div class="page-title" id="pageTitle"></div>
+    <button class="icon-btn" id="editToggle" aria-label="Edit buttons"></button>
+  </header>
+
+  <main class="deck" id="deck" aria-live="polite"></main>
+
+  <nav class="banks" id="banks" aria-label="Pages"></nav>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<div class="overlay" id="pairing" hidden>
+  <div class="pair-card">
+    <h1>Connect to your PC</h1>
+    <p>On the PC, run <b>start.bat</b>. A pairing page opens with a QR code. Scan it with this device's camera.</p>
+    <p class="muted">Or type the code shown on the pairing page:</p>
+    <form id="tokenForm">
+      <input id="tokenInput" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Pairing code">
+      <button class="btn primary" type="submit">Connect</button>
+    </form>
+  </div>
+</div>
+
+<div class="overlay soft" id="offline" hidden>
+  <div class="pair-card">
+    <h1>PC not reachable</h1>
+    <p id="offlineMsg">Trying again…</p>
+    <p class="muted">Check that PocketDeck is running on the PC and that this device is on the same Wi-Fi.</p>
+    <button class="btn" id="forgetBtn">Pair again</button>
+  </div>
+</div>
+
+<div class="sheet-wrap" id="sheetWrap" hidden>
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true"></div>
+</div>
+
+<script src="/static/icons.js"></script>
+<script src="/static/app.js"></script>
+<script src="/static/editor.js"></script>
+</body>
+</html>

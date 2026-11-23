@@ -1,0 +1,919 @@
+{
+  "version": 1,
+  "pages": [
+    {
+      "name": "Home",
+      "icon": "home",
+      "items": [
+        {
+          "kind": "widget",
+          "widget": "nowplaying",
+          "span": "half"
+        },
+        {
+          "kind": "widget",
+          "widget": "volume",
+          "span": "half"
+        },
+        {
+          "kind": "button",
+          "label": "Chrome",
+          "icon": "auto",
+          "color": "amber",
+          "action": {
+            "type": "app",
+            "name": "Google Chrome"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Edge",
+          "icon": "auto",
+          "color": "blue",
+          "action": {
+            "type": "app",
+            "name": "Microsoft Edge"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Firefox",
+          "icon": "auto",
+          "color": "orange",
+          "action": {
+            "type": "app",
+            "name": "Firefox"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Brave",
+          "icon": "auto",
+          "color": "orange",
+          "action": {
+            "type": "app",
+            "name": "Brave"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Files",
+          "icon": "auto",
+          "color": "amber",
+          "action": {
+            "type": "app",
+            "name": "File Explorer"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Spotify",
+          "icon": "auto",
+          "color": "green",
+          "action": {
+            "type": "app",
+            "name": "Spotify"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Discord",
+          "icon": "auto",
+          "color": "violet",
+          "action": {
+            "type": "app",
+            "name": "Discord"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "WhatsApp",
+          "icon": "auto",
+          "color": "green",
+          "action": {
+            "type": "app",
+            "name": "WhatsApp"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Telegram",
+          "icon": "auto",
+          "color": "blue",
+          "action": {
+            "type": "app",
+            "name": "Telegram Desktop"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "VS Code",
+          "icon": "auto",
+          "color": "blue",
+          "action": {
+            "type": "app",
+            "name": "Visual Studio Code"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Terminal",
+          "icon": "auto",
+          "color": "slate",
+          "action": {
+            "type": "app",
+            "name": "Terminal"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Notepad",
+          "icon": "auto",
+          "color": "slate",
+          "action": {
+            "type": "app",
+            "name": "Notepad"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Steam",
+          "icon": "auto",
+          "color": "blue",
+          "action": {
+            "type": "app",
+            "name": "Steam"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Epic Games",
+          "icon": "auto",
+          "color": "slate",
+          "action": {
+            "type": "app",
+            "name": "Epic Games Launcher"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "OBS",
+          "icon": "auto",
+          "color": "slate",
+          "action": {
+            "type": "app",
+            "name": "OBS Studio"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Calculator",
+          "icon": "auto",
+          "color": "slate",
+          "action": {
+            "type": "app",
+            "name": "Calculator"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "YouTube",
+          "icon": "auto",
+          "color": "red",
+          "action": {
+            "type": "url",
+            "url": "https://youtube.com"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Audio",
+      "icon": "headphones",
+      "items": [
+        {
+          "kind": "widget",
+          "widget": "volume",
+          "span": "half"
+        },
+        {
+          "kind": "widget",
+          "widget": "devices",
+          "span": "half"
+        },
+        {
+          "kind": "button",
+          "label": "Previous",
+          "icon": "i:prev",
+          "color": "green",
+          "action": {
+            "type": "media",
+            "cmd": "prev"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Play / pause",
+          "icon": "i:playpause",
+          "color": "green",
+          "action": {
+            "type": "media",
+            "cmd": "playpause"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Next",
+          "icon": "i:next",
+          "color": "green",
+          "action": {
+            "type": "media",
+            "cmd": "next"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Volume down",
+          "icon": "i:volume-down",
+          "color": "cyan",
+          "action": {
+            "type": "volume",
+            "cmd": "down",
+            "step": 5
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Volume up",
+          "icon": "i:volume-up",
+          "color": "cyan",
+          "action": {
+            "type": "volume",
+            "cmd": "up",
+            "step": 5
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Mute",
+          "icon": "i:mute",
+          "color": "red",
+          "action": {
+            "type": "volume",
+            "cmd": "mute"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Mic",
+          "icon": "i:mic",
+          "color": "pink",
+          "action": {
+            "type": "mic",
+            "cmd": "toggle"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Next output",
+          "icon": "i:headphones",
+          "color": "violet",
+          "action": {
+            "type": "audio_device",
+            "cmd": "next"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Sound settings",
+          "icon": "i:settings",
+          "color": "slate",
+          "action": {
+            "type": "open",
+            "target": "ms-settings:sound"
+          }
+        },
+        {
+          "kind": "widget",
+          "widget": "mixer",
+          "span": "full"
+        }
+      ]
+    },
+    {
+      "name": "Sonar",
+      "icon": "settings",
+      "items": [
+        {
+          "kind": "widget",
+          "widget": "sonar",
+          "span": "full"
+        }
+      ]
+    },
+    {
+      "name": "Display",
+      "icon": "sun",
+      "items": [
+        {
+          "kind": "widget",
+          "widget": "brightness",
+          "span": "half"
+        },
+        {
+          "kind": "widget",
+          "widget": "powermode",
+          "span": "half"
+        },
+        {
+          "kind": "button",
+          "label": "Dimmer",
+          "icon": "i:sun-dim",
+          "color": "amber",
+          "action": {
+            "type": "brightness",
+            "cmd": "down",
+            "step": 10
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Brighter",
+          "icon": "i:sun",
+          "color": "amber",
+          "action": {
+            "type": "brightness",
+            "cmd": "up",
+            "step": 10
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Dark mode",
+          "icon": "i:moon",
+          "color": "violet",
+          "action": {
+            "type": "theme",
+            "mode": "toggle"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Screen off",
+          "icon": "i:monitor-off",
+          "color": "slate",
+          "action": {
+            "type": "power",
+            "cmd": "screen_off"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Laptop only",
+          "icon": "i:laptop",
+          "color": "blue",
+          "action": {
+            "type": "display",
+            "mode": "internal"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Duplicate",
+          "icon": "i:duplicate",
+          "color": "blue",
+          "action": {
+            "type": "display",
+            "mode": "clone"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Extend",
+          "icon": "i:extend",
+          "color": "blue",
+          "action": {
+            "type": "display",
+            "mode": "extend"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Monitor only",
+          "icon": "i:monitor",
+          "color": "blue",
+          "action": {
+            "type": "display",
+            "mode": "external"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Night light",
+          "icon": "i:moon",
+          "color": "orange",
+          "action": {
+            "type": "open",
+            "target": "ms-settings:nightlight"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Display settings",
+          "icon": "i:settings",
+          "color": "slate",
+          "action": {
+            "type": "open",
+            "target": "ms-settings:display"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Shortcuts",
+      "icon": "keyboard",
+      "items": [
+        {
+          "kind": "button",
+          "label": "Copy",
+          "icon": "i:copy",
+          "color": "blue",
+          "action": {
+            "type": "hotkey",
+            "keys": "ctrl+c"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Paste",
+          "icon": "i:paste",
+          "color": "blue",
+          "action": {
+            "type": "hotkey",
+            "keys": "ctrl+v"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Cut",
+          "icon": "i:cut",
+          "color": "blue",
+          "action": {
+            "type": "hotkey",
+            "keys": "ctrl+x"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Undo",
+          "icon": "i:undo",
+          "color": "cyan",
+          "action": {
+            "type": "hotkey",
+            "keys": "ctrl+z"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Redo",
+          "icon": "i:redo",
+          "color": "cyan",
+          "action": {
+            "type": "hotkey",
+            "keys": "ctrl+y"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Select all",
+          "icon": "i:select-all",
+          "color": "cyan",
+          "action": {
+            "type": "hotkey",
+            "keys": "ctrl+a"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Save",
+          "icon": "i:save",
+          "color": "green",
+          "action": {
+            "type": "hotkey",
+            "keys": "ctrl+s"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Find",
+          "icon": "i:search",
+          "color": "green",
+          "action": {
+            "type": "hotkey",
+            "keys": "ctrl+f"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Snip",
+          "icon": "i:snip",
+          "color": "pink",
+          "action": {
+            "type": "hotkey",
+            "keys": "win+shift+s"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Screenshot",
+          "icon": "i:camera",
+          "color": "pink",
+          "action": {
+            "type": "hotkey",
+            "keys": "win+printscreen"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Clipboard history",
+          "icon": "i:clipboard",
+          "color": "pink",
+          "action": {
+            "type": "hotkey",
+            "keys": "win+v"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Emoji",
+          "icon": "i:smile",
+          "color": "amber",
+          "action": {
+            "type": "hotkey",
+            "keys": "win+."
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Show desktop",
+          "icon": "i:desktop",
+          "color": "violet",
+          "action": {
+            "type": "hotkey",
+            "keys": "win+d"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Task view",
+          "icon": "i:grid",
+          "color": "violet",
+          "action": {
+            "type": "hotkey",
+            "keys": "win+tab"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Switch app",
+          "icon": "i:switch",
+          "color": "violet",
+          "action": {
+            "type": "hotkey",
+            "keys": "alt+tab"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Close window",
+          "icon": "i:close-window",
+          "color": "red",
+          "action": {
+            "type": "hotkey",
+            "keys": "alt+f4"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Snap left",
+          "icon": "i:snap-left",
+          "color": "slate",
+          "action": {
+            "type": "hotkey",
+            "keys": "win+left"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Snap right",
+          "icon": "i:snap-right",
+          "color": "slate",
+          "action": {
+            "type": "hotkey",
+            "keys": "win+right"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Maximize",
+          "icon": "i:maximize",
+          "color": "slate",
+          "action": {
+            "type": "hotkey",
+            "keys": "win+up"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "New desktop",
+          "icon": "i:new-desktop",
+          "color": "orange",
+          "action": {
+            "type": "hotkey",
+            "keys": "win+ctrl+d"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Desktop left",
+          "icon": "i:left",
+          "color": "orange",
+          "action": {
+            "type": "hotkey",
+            "keys": "win+ctrl+left"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Desktop right",
+          "icon": "i:right",
+          "color": "orange",
+          "action": {
+            "type": "hotkey",
+            "keys": "win+ctrl+right"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Reopen tab",
+          "icon": "i:history",
+          "color": "green",
+          "action": {
+            "type": "hotkey",
+            "keys": "ctrl+shift+t"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Voice typing",
+          "icon": "i:mic",
+          "color": "amber",
+          "action": {
+            "type": "hotkey",
+            "keys": "win+h"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Game Bar",
+          "icon": "i:gamepad",
+          "color": "green",
+          "action": {
+            "type": "hotkey",
+            "keys": "win+g"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Record clip",
+          "icon": "i:record",
+          "color": "red",
+          "action": {
+            "type": "hotkey",
+            "keys": "win+alt+g"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Task Manager",
+          "icon": "i:activity",
+          "color": "cyan",
+          "action": {
+            "type": "hotkey",
+            "keys": "ctrl+shift+esc"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Run",
+          "icon": "i:terminal",
+          "color": "slate",
+          "action": {
+            "type": "hotkey",
+            "keys": "win+r"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Windows",
+      "icon": "windows",
+      "items": [
+        {
+          "kind": "widget",
+          "widget": "windows",
+          "span": "full"
+        }
+      ]
+    },
+    {
+      "name": "System",
+      "icon": "cpu",
+      "items": [
+        {
+          "kind": "widget",
+          "widget": "stats",
+          "span": "full"
+        },
+        {
+          "kind": "button",
+          "label": "Lock",
+          "icon": "i:lock",
+          "color": "blue",
+          "action": {
+            "type": "power",
+            "cmd": "lock"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Sleep",
+          "icon": "i:sleep",
+          "color": "violet",
+          "action": {
+            "type": "power",
+            "cmd": "sleep"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Restart",
+          "icon": "i:restart",
+          "color": "amber",
+          "action": {
+            "type": "power",
+            "cmd": "restart"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Shut down",
+          "icon": "i:power",
+          "color": "red",
+          "action": {
+            "type": "power",
+            "cmd": "shutdown"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Cancel shutdown",
+          "icon": "i:cancel",
+          "color": "slate",
+          "action": {
+            "type": "power",
+            "cmd": "cancel"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Sign out",
+          "icon": "i:logout",
+          "color": "slate",
+          "action": {
+            "type": "power",
+            "cmd": "signout"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Game mode",
+          "icon": "i:gamepad",
+          "color": "red",
+          "action": {
+            "type": "macro",
+            "steps": [
+              {
+                "type": "power_mode",
+                "mode": "performance"
+              },
+              {
+                "type": "brightness",
+                "cmd": "set",
+                "value": 100
+              },
+              {
+                "type": "app",
+                "name": "Discord"
+              },
+              {
+                "type": "delay",
+                "ms": 800
+              },
+              {
+                "type": "app",
+                "name": "Steam"
+              }
+            ]
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Battery saver",
+          "icon": "i:leaf",
+          "color": "green",
+          "action": {
+            "type": "macro",
+            "steps": [
+              {
+                "type": "power_mode",
+                "mode": "efficiency"
+              },
+              {
+                "type": "brightness",
+                "cmd": "set",
+                "value": 40
+              }
+            ]
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Armoury Crate",
+          "icon": "auto",
+          "color": "red",
+          "action": {
+            "type": "app",
+            "name": "Armoury Crate"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "NVIDIA App",
+          "icon": "auto",
+          "color": "green",
+          "action": {
+            "type": "app",
+            "name": "NVIDIA App"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Wi-Fi",
+          "icon": "i:wifi",
+          "color": "cyan",
+          "action": {
+            "type": "open",
+            "target": "ms-settings:network-wifi"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Bluetooth",
+          "icon": "i:bluetooth",
+          "color": "blue",
+          "action": {
+            "type": "open",
+            "target": "ms-settings:bluetooth"
+          }
+        },
+        {
+          "kind": "button",
+          "label": "Settings",
+          "icon": "auto",
+          "color": "slate",
+          "action": {
+            "type": "app",
+            "name": "Settings"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Trackpad",
+      "icon": "pointer",
+      "items": [
+        {
+          "kind": "widget",
+          "widget": "trackpad",
+          "span": "full"
+        },
+        {
+          "kind": "widget",
+          "widget": "typer",
+          "span": "full"
+        }
+      ]
+    }
+  ]
+}

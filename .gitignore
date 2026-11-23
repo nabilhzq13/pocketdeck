@@ -1,0 +1,24 @@
+# Created on each PC when PocketDeck runs. Never publish these.
+# The pairing code: anyone with it can control the PC.
+settings.json
+# Your own buttons and pages.
+config.json
+config.json.bak
+config.json.tmp
+# Icons taken from your installed apps.
+cache/
+# Logs contain IP addresses and Windows user paths.
+*.log
+*.log.old
+
+# Installed by start.bat from requirements.txt.
+.deps/
+__pycache__/
+*.pyc
+
+# Editors and tools.
+.claude/
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini

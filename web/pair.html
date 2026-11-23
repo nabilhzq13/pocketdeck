@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pair PocketDeck</title>
+<link rel="icon" href="/app-icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --chassis: #1c1f26; --well: #13151a; --ink: #ece8df; --ink-2: #9aa0ab; --ink-3: #646a75; --led: #ffb547; color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; background: var(--chassis); color: var(--ink);
+    font-family: "Barlow Semi Condensed", ui-sans-serif, system-ui, "Segoe UI", sans-serif; font-size: 17px; line-height: 1.45; }
+  main { max-width: 920px; margin: 0 auto; padding: 48px 24px; display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 48px; align-items: start; }
+  @media (max-width: 760px) { main { grid-template-columns: 1fr; gap: 28px; padding: 28px 16px; } }
+  .qr { background: #fff; border-radius: 22px; padding: 18px; box-shadow: 0 0 0 6px var(--well), 0 0 40px -6px rgba(255,181,71,.35); }
+  .qr svg { display: block; width: 100%; height: auto; }
+  h1 { font-size: 40px; line-height: 1.05; margin: 0 0 14px; }
+  h2 { font-size: 20px; margin: 30px 0 8px; }
+  p, li { color: var(--ink-2); max-width: 62ch; }
+  ol { padding-left: 22px; margin: 0; }
+  ol li { margin: 6px 0; }
+  b { color: var(--ink); }
+  code { font-family: ui-monospace, Consolas, monospace; font-size: 15px; color: var(--led); background: var(--well); padding: 2px 7px; border-radius: 6px; word-break: break-all; }
+  ul.addr { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+  ul.addr li { display: flex; gap: 12px; align-items: baseline; }
+  ul.addr span { color: var(--ink-3); font-size: 15px; }
+  .url { margin-top: 14px; font-size: 14px; color: var(--ink-3); word-break: break-all; }
+  a { color: var(--led); }
+</style>
+</head>
+<body>
+<main>
+  <div>
+    <div class="qr">{{QR}}</div>
+    <p class="url">{{URL}}</p>
+  </div>
+  <div>
+    <h1>Scan to turn your phone into a deck</h1>
+    <ol>
+      <li>Connect your phone or iPad to the <b>same Wi-Fi</b> as this PC.</li>
+      <li>Open the camera and scan the code. The deck opens in the browser.</li>
+      <li>On iPhone or iPad, tap Share, then <b>Add to Home Screen</b>, for a full-screen app.</li>
+    </ol>
+
+    <h2>Typing the code instead</h2>
+    <p>Open <code>http://{{FIRST_IP}}:{{PORT}}</code> on the phone and enter this pairing code: <code>{{TOKEN}}</code></p>
+
+    <h2>Addresses of this PC</h2>
+    <ul class="addr">{{ADDRS}}</ul>
+
+    <h2>If the phone can’t connect</h2>
+    <p>Hotel, campus and office Wi-Fi often block devices from reaching each other. Turn on <b>Mobile hotspot</b> in Windows settings, join it from your phone, and reload this page to get a new code.</p>
+    <p>If Windows asked about the firewall when PocketDeck started, allow it. To allow it later, double-click <b>allow-firewall.bat</b> in the PocketDeck folder.</p>
+    <p>Anyone with this code can control the PC. To change it, delete the token line in <code>settings.json</code> and restart PocketDeck.</p>
+    <p><a href="{{LOCAL}}">Open the deck on this PC</a> to try it here.</p>
+  </div>
+</main>
+</body>
+</html>
