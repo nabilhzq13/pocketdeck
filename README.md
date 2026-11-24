@@ -65,14 +65,40 @@ To pair another device later, open `http://localhost:8765/pair` on the PC.
   reorder or delete the page. Tap ✓ when you're done.
 - Your layout is saved on the PC in `config.json`, so every phone shows the same deck.
 
+## Use it on any network (Tailscale)
+
+On the same home Wi-Fi, scanning the QR code is all you need. But school, hotel and office Wi-Fi
+usually give the PC a **different address every time** (so the saved code stops working) and
+often **block devices from reaching each other** on purpose. Tailscale solves both without
+touching those network settings: each device makes an ordinary outbound connection to Tailscale,
+and they meet over an encrypted link. The PC then keeps **one address that never changes**, so a
+single Home Screen app works at home, on any campus, in hotels and on mobile data.
+
+One-time setup:
+
+1. Install Tailscale on the PC (`winget install Tailscale.Tailscale`) and sign in (free).
+2. Double-click **`tailscale-setup.bat`** and click **Yes**. It keeps Tailscale connected on its
+   own (no window to leave open), starts it at sign-in, and opens the firewall. It prints the
+   PC's Tailscale address, like `100.x.y.z`.
+3. Install **Tailscale** from the App Store on the phone/iPad, sign in with the **same account**,
+   and leave it on.
+4. On the phone, open `http://<that 100.x.y.z address>:8765` and add it to the Home Screen.
+
+That address stays the same on every network, so you only do this once.
+
+`.\tailscale-setup.ps1 -Off` stops Tailscale starting at sign-in. Over Tailscale the connection
+is encrypted, unlike a plain Wi-Fi connection, which is safer on shared networks.
+
 ## If the phone can't connect
 
-- Check that the phone and PC are on the **same Wi-Fi**.
-- Run `allow-firewall.bat`. It opens port 8765 for devices on your local network only.
-- Hotel, school and office Wi-Fi often block devices from reaching each other. Turn on **Mobile
-  hotspot** on the PC, join it from the phone, and open the pairing page again.
+- Check that the phone and PC are on the **same Wi-Fi** (or use Tailscale, above).
+- Run `allow-firewall.bat`. It opens port 8765 for your local network and your own Tailscale
+  devices only.
+- Hotel, school and office Wi-Fi often block devices from reaching each other. Use **Tailscale**
+  (above), or turn on **Mobile hotspot** on the PC, join it from the phone, and open the pairing
+  page again.
 - If your router gives the PC a new address, scan the QR code again. To avoid this, reserve an
-  address for the PC in your router's settings.
+  address for the PC in your router's settings, or use Tailscale so the address never changes.
 
 ## Privacy and security
 
@@ -80,8 +106,8 @@ To pair another device later, open `http://localhost:8765/pair` on the PC.
 - Each PC creates its own random pairing code (in `settings.json`). Anyone on your network who
   has it can control your PC, so don't share it. To change it, delete the `token` line in
   `settings.json` and restart PocketDeck. Every phone then has to pair again.
-- Traffic between the phone and the PC is not encrypted, so only use PocketDeck on networks you
-  trust.
+- Traffic between the phone and the PC is not encrypted on plain Wi-Fi, so only use it on
+  networks you trust — or use **Tailscale** (above), which encrypts the connection.
 - The phone loads its font from Google Fonts, and website buttons show icons from Google's
   favicon service. The first run downloads Python packages from PyPI.
 - Personal files stay out of the download and out of git: `settings.json`, `config.json`, the

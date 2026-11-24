@@ -27,21 +27,22 @@
   ul.addr { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
   ul.addr li { display: flex; gap: 12px; align-items: baseline; }
   ul.addr span { color: var(--ink-3); font-size: 15px; }
-  .url { margin-top: 14px; font-size: 14px; color: var(--ink-3); word-break: break-all; }
+  .cards { display: grid; gap: 28px; }
+  .card { margin: 0; }
+  .card figcaption { margin-top: 14px; display: grid; gap: 2px; }
+  .card figcaption b { font-size: 18px; }
+  .card figcaption span { font-size: 14px; color: var(--ink-3); word-break: break-all; }
   a { color: var(--led); }
 </style>
 </head>
 <body>
 <main>
-  <div>
-    <div class="qr">{{QR}}</div>
-    <p class="url">{{URL}}</p>
-  </div>
+  <div class="cards">{{CARDS}}</div>
   <div>
     <h1>Scan to turn your phone into a deck</h1>
     <ol>
-      <li>Connect your phone or iPad to the <b>same Wi-Fi</b> as this PC.</li>
-      <li>Open the camera and scan the code. The deck opens in the browser.</li>
+      <li>Connect your phone or iPad to the <b>same Wi-Fi</b> as this PC, or to this PC’s Mobile hotspot.</li>
+      <li>Open the camera and scan the code for that network. The deck opens in the browser.</li>
       <li>On iPhone or iPad, tap Share, then <b>Add to Home Screen</b>, for a full-screen app.</li>
     </ol>
 
@@ -52,7 +53,8 @@
     <ul class="addr">{{ADDRS}}</ul>
 
     <h2>If the phone can’t connect</h2>
-    <p>Hotel, campus and office Wi-Fi often block devices from reaching each other. Turn on <b>Mobile hotspot</b> in Windows settings, join it from your phone, and reload this page to get a new code.</p>
+    <p>Hotel, campus and office Wi-Fi often block devices from reaching each other. Turn on <b>Mobile hotspot</b> in Windows (Quick Settings or Settings → Network &amp; internet), join it from your phone, and reload this page: a “Mobile hotspot” code appears.</p>
+    <p>Each network gives this PC a different address, and the iPhone or iPad keeps a separate home-screen app for each one. Add one from home Wi-Fi and one from the hotspot, and you’re set for both.</p>
     <p>If Windows asked about the firewall when PocketDeck started, allow it. To allow it later, double-click <b>allow-firewall.bat</b> in the PocketDeck folder.</p>
     <p>Anyone with this code can control the PC. To change it, delete the token line in <code>settings.json</code> and restart PocketDeck.</p>
     <p><a href="{{LOCAL}}">Open the deck on this PC</a> to try it here.</p>

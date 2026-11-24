@@ -31,7 +31,9 @@ faulthandler.enable(_crash_log)  # writes a traceback here if the process ever c
 
 import asyncio  # noqa: E402
 import hmac  # noqa: E402
+import ipaddress  # noqa: E402
 import json  # noqa: E402
+from html import escape as html_escape  # noqa: E402
 import logging  # noqa: E402
 import secrets  # noqa: E402
 import shutil  # noqa: E402
@@ -131,8 +133,11 @@ def save_config(cfg):
     os.replace(tmp, CONFIG)
 
 
+TAILNET = ipaddress.ip_network("100.64.0.0/10")  # addresses Tailscale hands out
+
+
 def lan_addresses():
-    skip = ("virtualbox", "vmware", "vethernet", "loopback", "bluetooth", "hyper-v", "wsl")
+    skip = ("virtualbox", "vmware", "vethernet", "loopback", "hyper-v", "wsl")
     skip_ips = ("192.168.56.",)  # VirtualBox host-only network
     stats_ = psutil.net_if_stats()
     found = []
@@ -141,11 +146,36 @@ def lan_addresses():
             continue
         for a in addrs:
             if a.family == socket.AF_INET and not a.address.startswith(("127.", "169.254.", *skip_ips)):
-                rank = 0 if "wi-fi" in name.lower() or "wlan" in name.lower() else (
-                    1 if "ethernet" in name.lower() else 2)
-                found.append((rank, a.address, name))
+                if name.lower().startswith("tailscale") or ipaddress.ip_address(a.address) in TAILNET:
+                    # Tailscale: same address on every network, even when the phone is elsewhere
+                    rank, label = -1, "Tailscale"
+                elif a.address.startswith("192.168.137."):  # Windows Mobile hotspot
+                    rank, label = 0, "Mobile hotspot"
+                elif "bluetooth" in name.lower():
+                    # e.g. joined an iPhone's Personal Hotspot over Bluetooth: no Wi-Fi needed
+                    rank, label = 0, "Bluetooth"
+                elif "wi-fi" in name.lower() or "wlan" in name.lower():
+                    rank, label = 1, "Wi-Fi"
+                elif "ethernet" in name.lower():
+                    rank, label = 2, "Ethernet"
+                else:
+                    rank, label = 3, name
+                found.append((rank, a.address, name, label))
     found.sort()
-    return [{"ip": ip, "adapter": name} for _, ip, name in found]
+    return [{"ip": ip, "adapter": name, "label": label} for _, ip, name, label in found]
+
+
+def network_names():
+    """Interface alias -> network name (e.g. "Home Wi-Fi"), for labelling the pairing codes."""
+    import subprocess
+    try:
+        out = subprocess.run(
+            ["powershell", "-NoProfile", "-Command",
+             "Get-NetConnectionProfile | ForEach-Object { $_.InterfaceAlias + '|' + $_.Name }"],
+            capture_output=True, text=True, timeout=8, creationflags=0x08000000).stdout
+    except (OSError, subprocess.SubprocessError):
+        return {}
+    return dict(line.split("|", 1) for line in out.splitlines() if "|" in line)
 
 # ------------------------------------------------------------------ worker threads
 
@@ -485,14 +515,28 @@ class Deck:
         import qrcode.image.svg
         port = self.settings["port"]
         addrs = lan_addresses()
-        links = [f"http://{a['ip']}:{port}/#t={self.token}" for a in addrs]
-        primary = links[0] if links else f"http://localhost:{port}/#t={self.token}"
-        svg = qrcode.make(primary, image_factory=qrcode.image.svg.SvgPathImage,
-                          box_size=12, border=2).to_string(encoding="unicode")
+        nets = await self.loop.run_in_executor(None, network_names)
+        # One code per network: the address changes with every Wi-Fi (home, campus, hotspot).
+        cards = []
+        for a in addrs:
+            link = f"http://{a['ip']}:{port}/#t={self.token}"
+            svg = qrcode.make(link, image_factory=qrcode.image.svg.SvgPathImage,
+                              box_size=12, border=2).to_string(encoding="unicode")
+            if a["label"] == "Tailscale":
+                title = "Tailscale: works on any network"
+            else:
+                title = a["label"] + (f": {nets[a['adapter']]}" if nets.get(a["adapter"]) else "")
+            cards.append(f'<figure class="card"><div class="qr">{svg}</div><figcaption>'
+                         f'<b>{html_escape(title)}</b><span>http://{a["ip"]}:{port}</span>'
+                         f'</figcaption></figure>')
+        if not cards:
+            cards.append('<p>No network found. Connect to Wi-Fi or turn on Mobile hotspot, '
+                         'then reload this page.</p>')
         with open(os.path.join(WEB, "pair.html"), encoding="utf-8") as f:
             html = f.read()
-        rows = "".join(f'<li><code>{a["ip"]}</code><span>{a["adapter"]}</span></li>' for a in addrs)
-        html = (html.replace("{{QR}}", svg).replace("{{URL}}", primary)
+        rows = "".join(f'<li><code>{a["ip"]}</code><span>{html_escape(a["label"])}</span></li>'
+                       for a in addrs)
+        html = (html.replace("{{CARDS}}", "".join(cards))
                 .replace("{{ADDRS}}", rows or "<li>No network found. Connect to Wi-Fi.</li>")
                 .replace("{{FIRST_IP}}", addrs[0]["ip"] if addrs else "localhost")
                 .replace("{{TOKEN}}", self.token)
